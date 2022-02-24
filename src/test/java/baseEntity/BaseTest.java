@@ -5,17 +5,13 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import core.DataBaseService;
 import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.apache.log4j.Logger;
-import org.testng.annotations.*;
-import tests.gui.selenide.UiSelenideTests;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
-    public static Logger logger = Logger.getLogger(UiSelenideTests.class);
-
     protected DataBaseService dataBaseService;
-
 
     @BeforeClass
     public void setUp() {
