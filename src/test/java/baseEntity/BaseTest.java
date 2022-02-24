@@ -2,6 +2,7 @@ package baseEntity;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import core.DataBaseService;
 import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.AfterClass;
@@ -10,7 +11,7 @@ import org.testng.annotations.BeforeClass;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class BaseTest {
-
+    protected DataBaseService dataBaseService;
 
     @BeforeClass
     public void setUp() {
@@ -24,6 +25,7 @@ public class BaseTest {
         org.apache.log4j.BasicConfigurator.configure();
 
         // Настройка Selenide
+        dataBaseService = new DataBaseService();
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
         Configuration.startMaximized = false;
