@@ -9,8 +9,6 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.AddProjectSelenide;
 import pages.LoginPageSelenide;
-
-import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -35,12 +33,22 @@ public class UiPositiveTests extends BaseTest {
 
         addProjectSelenide = projectSteps.addProject(addProject);
         $(By.xpath("//p[@class='header']")).shouldBe(visible).shouldHave(text("Kanye"));
+
     }
 
-    @Test
-    public void deleteCaseTest() {
+    @Test(description = "createCaseTest")
+    public void deleteProjectTest() {
         addProjectSelenide = projectSteps.deleteProject(addProject);
         $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
+    }
+
+    @Test(description = "deleteProjectTest")
+    public void popUpWindowTest(){
+        $(By.xpath("//*[.= 'Workspace']")).click();
+        $(By.xpath("//*[.= 'Logs']")).click();
+        $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
+        $(By.xpath("//*[.= 'not now']")).click();
+
     }
 }
 
