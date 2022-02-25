@@ -38,7 +38,7 @@ public class UiPositiveTests extends BaseTest {
     }
 
     @Test
-    public void deleteProjectTest() {
+    public void deleteCaseTest() {
         addProjectSelenide = projectSteps.deleteProject(addProject);
         $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
     }
