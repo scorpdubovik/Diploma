@@ -5,26 +5,28 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import core.DataBaseService;
 import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.apache.log4j.Logger;
+import org.testng.annotations.*;
+import steps.DB_ProjectSteps;
+import steps.ProjectSteps;
+import tests.gui.selenide.UiPositiveTests;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.$;
 
 public class BaseTest {
+    public static Logger logger = Logger.getLogger(UiPositiveTests.class);
+    protected ProjectSteps projectSteps;
+    protected DB_ProjectSteps db_projectSteps;
     protected DataBaseService dataBaseService;
 
-    @BeforeClass
+    @BeforeClass(dependsOnMethods = "setupConnection")
     public void setUp() {
-        //for fine-tuning:
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true)
         );
 
-        // Настройка slf4j
-        org.apache.log4j.BasicConfigurator.configure();
-
-        // Настройка Selenide
         dataBaseService = new DataBaseService();
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
@@ -32,10 +34,20 @@ public class BaseTest {
         Configuration.fastSetValue = true;
         Configuration.timeout = 8000;
         Configuration.headless = ReadProperties.isHeadless();
+
+        projectSteps = new ProjectSteps();
+        db_projectSteps = new DB_ProjectSteps();
+
+    }
+
+    @BeforeClass
+    public void setupConnection() {
+        org.apache.log4j.BasicConfigurator.configure();
+        dataBaseService = new DataBaseService();
     }
 
     @AfterClass
-    public void closePage() {
-        closeWebDriver();
+    public void closeConnection() {
+        dataBaseService.closeConnection();
     }
 }
