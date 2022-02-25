@@ -35,4 +35,5 @@ public class ReadProperties {
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
+
 }
