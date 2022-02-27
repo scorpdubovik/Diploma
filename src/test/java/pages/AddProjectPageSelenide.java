@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.Thread.sleep;
 
-public class AddProjectSelenide {
+public class AddProjectPageSelenide {
 
     private final By nameProjectSelector = By.id("inputTitle");
     private final By codeProjectSelector = By.id("inputCode");
