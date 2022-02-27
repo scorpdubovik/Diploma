@@ -16,9 +16,9 @@ public class ReadProperties {
         }
     }
 
-    public static String getUrl() {
-        return properties.getProperty("url");
-    }
+    public static String getUrl() {return properties.getProperty("url");}
+
+    public static String getApiUrl() {return properties.getProperty("url_api");}
 
     public static String getBrowserName() {
         return properties.getProperty("browser");
@@ -35,5 +35,4 @@ public class ReadProperties {
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }
-
 }

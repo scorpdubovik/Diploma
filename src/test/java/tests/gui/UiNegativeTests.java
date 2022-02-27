@@ -1,4 +1,4 @@
-package tests.gui.selenide;
+package tests.gui;
 
 public class UiNegativeTests {
 }

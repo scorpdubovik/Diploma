@@ -1,6 +1,9 @@
 package models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ProjectBuilder {
+    @SerializedName("title")
     private String name;
     private String code;
     private String description;

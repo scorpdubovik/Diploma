@@ -9,7 +9,7 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.*;
 import steps.DB_ProjectSteps;
 import steps.ProjectSteps;
-import tests.gui.selenide.UiPositiveTests;
+import tests.gui.UiPositiveTests;
 
 import static com.codeborne.selenide.Selenide.$;
 
