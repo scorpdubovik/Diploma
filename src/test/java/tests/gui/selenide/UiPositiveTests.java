@@ -20,7 +20,7 @@ public class UiPositiveTests extends BaseTest {
     ProjectTable projectTable = new ProjectTable(dataBaseService);
 
     @Test
-    public void createCaseTest() {
+    public void createProjectTest() {
         db_projectSteps.createProjectTable(dataBaseService);
 
         open(ReadProperties.getUrl());
@@ -36,18 +36,18 @@ public class UiPositiveTests extends BaseTest {
 
     }
 
-    @Test(description = "createCaseTest")
+    @Test(description = "createProjectTest")
     public void deleteProjectTest() {
         addProjectSelenide = projectSteps.deleteProject(addProject);
         $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
     }
 
     @Test(description = "deleteProjectTest")
-    public void popUpWindowTest(){
+    public void popUpWindowTest1(){
         $(By.xpath("//*[.= 'Workspace']")).click();
         $(By.xpath("//*[.= 'Logs']")).click();
         $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
-        $(By.xpath("//*[.= 'not now']")).click();
+        $(By.xpath("//*[.= 'not now']")).doubleClick();
 
     }
 }
