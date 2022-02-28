@@ -11,7 +11,7 @@ import steps.CaseSteps;
 import steps.DB_CaseSteps;
 import steps.DB_ProjectSteps;
 import steps.ProjectSteps;
-import tests.gui.selenide.UiPositiveTests;
+import tests.gui.UiPositiveTests;
 
 
 public class BaseTest {
