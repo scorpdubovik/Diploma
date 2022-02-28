@@ -44,7 +44,7 @@ public class UiPositiveTests extends BaseTest {
     }
 
     @Test(description = "createProjectTest")
-    public void ddCaseForCheckDialogBoxTest(){
+    public void CaseForCheckDialogBoxTest(){
         db_caseSteps.createCaseTable(dataBaseService);
 
         addCases = db_caseSteps.createAddCase(dataBaseService, 1);
@@ -54,7 +54,7 @@ public class UiPositiveTests extends BaseTest {
         $(By.xpath("//*[@class='style_title-1ehyC']")).shouldBe(visible).shouldHave(text("Test cases without suite"));
     }
 
-    @Test(description = "ddCaseForCheckDialogBoxTest")
+    @Test(description = "CaseForCheckDialogBoxTest")
     public void deleteProjectTest() {
         addProjectSelenide = projectSteps.deleteProject(addProject);
         $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
