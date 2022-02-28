@@ -7,17 +7,21 @@ import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
+import steps.CaseSteps;
+import steps.DB_CaseSteps;
 import steps.DB_ProjectSteps;
 import steps.ProjectSteps;
 import tests.gui.UiPositiveTests;
 
-import static com.codeborne.selenide.Selenide.$;
 
 public class BaseTest {
     public static Logger logger = Logger.getLogger(UiPositiveTests.class);
     protected ProjectSteps projectSteps;
+    protected CaseSteps caseSteps;
     protected DB_ProjectSteps db_projectSteps;
+    protected DB_CaseSteps db_caseSteps;
     protected DataBaseService dataBaseService;
+
 
     @BeforeClass(dependsOnMethods = "setupConnection")
     public void setUp() {
@@ -36,7 +40,9 @@ public class BaseTest {
         Configuration.headless = ReadProperties.isHeadless();
 
         projectSteps = new ProjectSteps();
+        caseSteps = new CaseSteps();
         db_projectSteps = new DB_ProjectSteps();
+        db_caseSteps = new DB_CaseSteps();
 
     }
 

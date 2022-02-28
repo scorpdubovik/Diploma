@@ -36,14 +36,6 @@ public class ProjectTable {
         dataBaseService.executeSQL(dropTableProjectSQL);
     }
 
-    public ResultSet getAllProjects() {
-        logger.info("Получаем все записи из таблицы project");
-
-        String sql = "SELECT * FROM project ORDER BY id ASC;";
-
-        return dataBaseService.executeQuery(sql);
-    }
-
     public ResultSet getProjectByID(int id) {
         String sql = "SELECT * FROM project WHERE id = " + id + ";";
 
