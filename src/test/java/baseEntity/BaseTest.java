@@ -7,19 +7,19 @@ import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
-import steps.CaseSteps;
-import steps.DB_CaseSteps;
-import steps.DB_ProjectSteps;
-import steps.ProjectSteps;
+import steps.*;
+import tests.gui.UiNegativeTests;
 import tests.gui.UiPositiveTests;
 
 
 public class BaseTest {
     public static Logger logger = Logger.getLogger(UiPositiveTests.class);
+    public static Logger logger1 = Logger.getLogger(UiNegativeTests.class);
     protected ProjectSteps projectSteps;
     protected CaseSteps caseSteps;
     protected DB_ProjectSteps db_projectSteps;
     protected DB_CaseSteps db_caseSteps;
+    protected InviteSteps inviteSteps;
     protected DataBaseService dataBaseService;
 
 
@@ -43,6 +43,7 @@ public class BaseTest {
         caseSteps = new CaseSteps();
         db_projectSteps = new DB_ProjectSteps();
         db_caseSteps = new DB_CaseSteps();
+        inviteSteps = new InviteSteps();
 
     }
 
