@@ -34,7 +34,7 @@ public class BaseTest {
         dataBaseService = new DataBaseService();
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
-        Configuration.startMaximized = false;
+        Configuration.startMaximized = true;
         Configuration.fastSetValue = true;
         Configuration.timeout = 8000;
         Configuration.headless = ReadProperties.isHeadless();
