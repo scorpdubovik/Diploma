@@ -20,11 +20,6 @@ public class UiNegativeTests extends BaseTest {
     @Test
     @Description("Incorrect data entry test")
     public void badDataTest() {
-        open(ReadProperties.getUrl());
-
-        LoginPageSelenide loginPageSelenide = new LoginPageSelenide();
-        loginPageSelenide.loginUsers();
-
         newUser = new UserBuilder.Builder()
                 .withEmail("#$@#")
                 .withName(Randomization.getRandomString(8))

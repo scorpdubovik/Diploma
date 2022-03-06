@@ -2,6 +2,7 @@ package tests.gui;
 
 import baseEntity.BaseTest;
 import core.ReadProperties;
+import data.StaticProvider;
 import dbEntries.CaseTable;
 import dbEntries.ProjectTable;
 import models.CaseBuilder;
@@ -35,21 +36,31 @@ public class UiPositiveTests extends BaseTest {
     public void createProjectTest() {
         db_projectSteps.createProjectTable(dataBaseService);
 
-        open(ReadProperties.getUrl());
-
-        LoginPageSelenide loginPageSelenide = new LoginPageSelenide();
-        loginPageSelenide.loginUsers();
-
         addProject = db_projectSteps.createAddProject(dataBaseService, 1);
         addProjectName = addProject.getName();
 
         addProjectSelenide = projectSteps.addProject(addProject);
         $(By.xpath("//p[@class='header']")).shouldBe(visible).shouldHave(text("Kanye"));
+    }
 
+    @Test(dataProvider = "dataForLimitTest", dataProviderClass = StaticProvider.class)
+    public void limitTest(String name, String code, String expectedResult) {
+        ProjectBuilder newProject = new ProjectBuilder.Builder()
+                .withName(name)
+                .withCode(code)
+                .build();
+
+        addProjectSelenide = projectSteps.addProject(newProject);
+        if (code.length() != 1) {
+            $(".alert-message").shouldBe(visible).shouldHave(text(expectedResult));
+            projectSteps.deleteProject(newProject);
+        } else {
+            $(".form-control-feedback").shouldBe(visible).shouldHave(text(expectedResult));
+        }
     }
 
     @Test(description = "createProjectTest")
-    public void ddCaseForCheckDialogBoxTest(){
+    public void ddCaseForCheckDialogBoxTest() {
         db_caseSteps.createCaseTable(dataBaseService);
 
         addCases = db_caseSteps.createAddCase(dataBaseService, 1);
@@ -66,7 +77,7 @@ public class UiPositiveTests extends BaseTest {
     }
 
     @Test(description = "deleteProjectTest")
-    public void popUpWindowTest(){
+    public void popUpWindowTest() {
         $(By.xpath("//*[.= 'Workspace']")).click();
         $(By.xpath("//*[.= 'Logs']")).click();
         $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
@@ -74,7 +85,7 @@ public class UiPositiveTests extends BaseTest {
     }
 
     @Test(description = "popUpWindowTest")
-    public void uploadFileTest(){
+    public void uploadFileTest() {
         $(By.id("user-menu")).click();
         $(By.xpath("//*[.= ' Profile']")).click();
         $("input#fileupload").uploadFile(new File("src\\test\\resources\\smile.png"));

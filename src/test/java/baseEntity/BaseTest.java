@@ -7,9 +7,12 @@ import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
+import pages.LoginPageSelenide;
 import steps.*;
 import tests.gui.UiNegativeTests;
 import tests.gui.UiPositiveTests;
+
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class BaseTest {
@@ -45,6 +48,11 @@ public class BaseTest {
         db_caseSteps = new DB_CaseSteps();
         inviteSteps = new InviteSteps();
 
+        // Login
+        open("/");
+
+        LoginPageSelenide loginPageSelenide = new LoginPageSelenide();
+        loginPageSelenide.loginUsers();
     }
 
     @BeforeClass
