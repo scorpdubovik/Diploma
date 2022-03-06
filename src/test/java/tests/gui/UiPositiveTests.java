@@ -77,7 +77,7 @@ public class UiPositiveTests extends BaseTest {
     public void uploadFileTest(){
         $(By.id("user-menu")).click();
         $(By.xpath("//*[.= ' Profile']")).click();
-        $("input#fileupload").uploadFile(new File("C:\\Users\\Nikita\\Documents\\0-02-0a-5ab853098c8eb17dbe35499bcea2a152f391b8736dac57707417ea103f2ec69b_ff54bcdcc40b54c6.png"));
+        $("input#fileupload").uploadFile(new File("src\\test\\resources\\smile.png"));
         sleep(12000);
 
         $("#project-image").shouldBe(visible);
