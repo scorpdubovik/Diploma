@@ -1,15 +1,17 @@
 package core;
 
+
+
 import org.apache.log4j.Logger;
 
 import java.sql.*;
 
 public class DataBaseService {
-    public static Logger logger = Logger.getLogger(DataBaseService.class);
+public  static Logger logger = Logger.getLogger(DataBaseService.class);
 
-    static final String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    static final String USER = "postgres";
-    static final String PASSWORD = "postgres";
+    static final String DB_URL = "jdbc:postgresql://SG-AndrNikDB-3047-pgsql-master.servers.mongodirector.com:5432/postgres";
+    static final String USER = "sgpostgres";
+    static final String PASSWORD = "dNNxC^1t2HbMzw2M";
 
     Connection connection = null;
     Statement statement = null;
