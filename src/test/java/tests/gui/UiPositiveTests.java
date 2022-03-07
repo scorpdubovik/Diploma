@@ -1,7 +1,6 @@
 package tests.gui;
 
 import baseEntity.BaseTest;
-import core.ReadProperties;
 import data.StaticProvider;
 import dbEntries.CaseTable;
 import dbEntries.ProjectTable;
@@ -9,17 +8,16 @@ import models.CaseBuilder;
 import models.ProjectBuilder;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AddCasePageSelenide;
 import pages.AddProjectPageSelenide;
-import pages.LoginPageSelenide;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UiPositiveTests extends BaseTest {
     private CaseBuilder addCases;
