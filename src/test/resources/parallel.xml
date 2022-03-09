@@ -3,11 +3,8 @@
 <suite name="MainSuite" thread-count="3" parallel="methods">
     <test name="Smoke">
         <classes>
-            <class name=" "></class>
-            <class name=" "></class>
-            <class name=" "></class>
-            <class name=" "></class>
-            <class name=" "></class>
+            <class name="tests.gui.UiPositiveTests"></class>
+            <class name="tests.gui.UiNegativeTests"></class>
         </classes>
     </test>
 </suite>
