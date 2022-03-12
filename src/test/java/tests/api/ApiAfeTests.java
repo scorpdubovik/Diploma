@@ -25,7 +25,7 @@ public class ApiAfeTests extends BaseApiTest {
                 .when()
                 .post(Endpoints.ADD_PROJECT)
                 .then()
-                .statusCode(HttpStatus.SC_UNPROCESSABLE_ENTITY);
+                .statusCode(HttpStatus.SC_BAD_REQUEST);
     }
 
     @Test

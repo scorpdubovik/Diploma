@@ -1,17 +1,14 @@
 package tests.gui;
 
 import baseEntity.BaseTest;
-import core.ReadProperties;
 import io.qameta.allure.Description;
 import models.UserBuilder;
 import org.testng.annotations.Test;
-import pages.LoginPageSelenide;
 import pages.WorkspacePageSelenide;
 import utils.Randomization;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.open;
 
 public class UiNegativeTests extends BaseTest {
     private UserBuilder newUser;
@@ -27,6 +24,7 @@ public class UiNegativeTests extends BaseTest {
                 .build();
 
         workspacePageSelenide = inviteSteps.inviteNewUser(newUser);
+
         workspacePageSelenide.getErrorMessage().shouldBe(visible).shouldHave(text("Validation error"));
     }
 
@@ -38,8 +36,9 @@ public class UiNegativeTests extends BaseTest {
                 .withName(Randomization.getRandomString(5))
                 .withRoleTitle(Randomization.getRandomString(256))
                 .build();
-        System.out.println(Randomization.getRandomString(256));
+
         workspacePageSelenide = inviteSteps.inviteNewUser(newUser);
+
         workspacePageSelenide.getErrorMessage().shouldBe(visible).shouldHave(text("Server Error"));
     }
 
@@ -51,8 +50,9 @@ public class UiNegativeTests extends BaseTest {
                 .withName(Randomization.getRandomString(4))
                 .withRoleTitle(Randomization.getRandomString(100))
                 .build();
-        System.out.println(Randomization.getRandomString(256));
+
         workspacePageSelenide = inviteSteps.inviteNewUser(newUser);
+
         workspacePageSelenide.getErrorMessage().shouldBe(visible).shouldHave(text("Validation error"));
     }
 }
