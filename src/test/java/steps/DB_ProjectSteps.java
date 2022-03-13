@@ -8,8 +8,6 @@ import org.apache.log4j.Logger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class DB_ProjectSteps {
     private ProjectTable projectTable;
     public ProjectBuilder newProject;
