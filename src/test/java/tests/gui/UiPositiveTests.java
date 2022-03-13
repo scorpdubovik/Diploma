@@ -26,9 +26,6 @@ public class UiPositiveTests extends BaseTest {
     private AddProjectPageSelenide addProjectSelenide;
     public static String addProjectName;
     public static String addCaseName;
-    public static Logger logger = Logger.getLogger(UiPositiveTests.class);
-    ProjectTable projectTable = new ProjectTable(dataBaseService);
-    CaseTable caseTable = new CaseTable(dataBaseService);
 
     @Test
     public void createProjectTest() {
