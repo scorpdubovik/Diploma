@@ -9,9 +9,9 @@ import java.sql.*;
 public class DataBaseService {
 public  static Logger logger = Logger.getLogger(DataBaseService.class);
 
-    static final String DB_URL = "jdbc:postgresql://ec2-34-247-151-118.eu-west-1.compute.amazonaws.com:5432/dbai3bjh7nnqm4";
-    static final String USER = "nwutlbqescsfje";
-    static final String PASSWORD = "ae5c109d422132a3cb031e93c1c5a3d4a2e28f89edfd14866273ae9ab8083964";
+    static final String DB_URL = "jdbc:postgresql://ec2-34-255-225-151.eu-west-1.compute.amazonaws.com:5432/da0p1ses73mop";
+    static final String USER = "titxhrvjgtgwwe";
+    static final String PASSWORD = "caff8a0253e69a00a82cbd7b6058b75d4f1da8a22998f1496e4eea2674426b2a";
 
     Connection connection = null;
     Statement statement = null;
