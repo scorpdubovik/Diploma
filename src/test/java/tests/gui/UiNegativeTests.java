@@ -4,7 +4,7 @@ import baseEntity.BaseTest;
 import io.qameta.allure.Description;
 import models.UserBuilder;
 import org.testng.annotations.Test;
-import pages.WorkspacePageSelenide;
+import pages.workspace.WorkspacePageSelenide;
 import utils.Randomization;
 
 import static com.codeborne.selenide.Condition.text;

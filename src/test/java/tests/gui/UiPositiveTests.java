@@ -2,15 +2,12 @@ package tests.gui;
 
 import baseEntity.BaseTest;
 import data.StaticProvider;
-import dbEntries.CaseTable;
-import dbEntries.ProjectTable;
 import models.CaseBuilder;
 import models.ProjectBuilder;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
-import pages.AddCasePageSelenide;
-import pages.AddProjectPageSelenide;
+import pages.cases.AddCasePageSelenide;
+import pages.projects.AddProjectPageSelenide;
 
 import java.io.File;
 
@@ -83,7 +80,7 @@ public class UiPositiveTests extends BaseTest {
     public void uploadFileTest() {
         $(By.id("user-menu")).click();
         $(By.xpath("//*[.= ' Profile']")).click();
-        $("input#fileupload").uploadFile(new File("src\\test\\resources\\smile.png"));
+        $("input#fileupload").uploadFile(new File("src\\test\\resources\\files\\smile.png"));
         sleep(12000);
 
         $("#project-image").shouldBe(visible);

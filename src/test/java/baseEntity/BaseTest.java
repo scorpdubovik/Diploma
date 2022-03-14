@@ -7,7 +7,7 @@ import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.apache.log4j.Logger;
 import org.testng.annotations.*;
-import pages.LoginPageSelenide;
+import pages.login.LoginPageSelenide;
 import steps.*;
 import tests.gui.UiNegativeTests;
 import tests.gui.UiPositiveTests;

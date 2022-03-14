@@ -1,14 +1,8 @@
 package steps;
 
 import models.CaseBuilder;
-import models.ProjectBuilder;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import pages.AddCasePageSelenide;
-import pages.AddProjectPageSelenide;
-
-import java.io.File;
+import pages.cases.AddCasePageSelenide;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
