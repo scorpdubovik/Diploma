@@ -32,6 +32,22 @@ public class ReadProperties {
         return properties.getProperty("password");
     }
 
+    public static String getDbUrl() {
+        return properties.getProperty("db_url");
+    }
+
+    public static String getDbUsername() {
+        return properties.getProperty("db_username");
+    }
+
+    public static String getDbPassword() {
+        return properties.getProperty("db_password");
+    }
+
+    public static String getToken() {
+        return properties.getProperty("token");
+    }
+
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }

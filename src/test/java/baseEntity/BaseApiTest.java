@@ -21,6 +21,6 @@ public class BaseApiTest {
         // Setup request Object
         RestAssured.requestSpecification = given()
                 .header(HTTP.CONTENT_TYPE, ContentType.JSON)
-                .header("Token", "9531b8f17dddd36986411cb6d7ed5849b2a29f75");
+                .header("Token", ReadProperties.getToken());
     }
 }

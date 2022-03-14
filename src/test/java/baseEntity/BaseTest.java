@@ -5,26 +5,20 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import core.DataBaseService;
 import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.apache.log4j.Logger;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import pages.login.LoginPageSelenide;
 import steps.*;
-import tests.gui.UiNegativeTests;
-import tests.gui.UiPositiveTests;
 
 import static com.codeborne.selenide.Selenide.open;
 
-
 public class BaseTest {
-    public static Logger logger = Logger.getLogger(UiPositiveTests.class);
-    public static Logger logger1 = Logger.getLogger(UiNegativeTests.class);
     protected ProjectSteps projectSteps;
     protected CaseSteps caseSteps;
     protected DB_ProjectSteps db_projectSteps;
     protected DB_CaseSteps db_caseSteps;
     protected InviteSteps inviteSteps;
     protected DataBaseService dataBaseService;
-
 
     @BeforeClass(dependsOnMethods = "setupConnection")
     public void setUp() {
@@ -33,8 +27,10 @@ public class BaseTest {
                 .screenshots(true)
                 .savePageSource(true)
         );
+        // Настройка slf4j
+        org.apache.log4j.BasicConfigurator.configure();
 
-        dataBaseService = new DataBaseService();
+        // Настройка Selenide
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
         Configuration.startMaximized = false;
