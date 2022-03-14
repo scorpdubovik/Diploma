@@ -16,8 +16,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 
 public class BaseTest {
-    public static Logger logger = Logger.getLogger(UiPositiveTests.class);
-    public static Logger logger1 = Logger.getLogger(UiNegativeTests.class);
     protected ProjectSteps projectSteps;
     protected CaseSteps caseSteps;
     protected DB_ProjectSteps db_projectSteps;
