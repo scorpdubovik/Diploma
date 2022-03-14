@@ -1,4 +1,4 @@
-package pages;
+package pages.workspace;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -7,8 +7,8 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class WorkspacePageSelenide {
-    private static String ENDPOINT = "/workspace?page=1";
 
+    private static String ENDPOINT = "/workspace?page=1";
     private final By membersSelector = By.xpath("//span[. = 'Members']");
     private final By invitesSelector = By.xpath("//span[text() = 'Invites']");
     private final By groupsSelector = By.xpath("//span[text() = 'Groups']");
@@ -25,29 +25,18 @@ public class WorkspacePageSelenide {
     public SelenideElement getMembersItem() {
         return $(membersSelector);
     }
-
     public SelenideElement getInvitesItem() {return $(invitesSelector);}
-
     public SelenideElement getGroupsItem() {
         return $(groupsSelector);
     }
-
     public SelenideElement getRolesItem() {return $(rolesSelector);}
-
     public SelenideElement getCustomFieldsItem() {return $(customFieldsSelector);}
-
     public SelenideElement getTagsItem() {return $(tagsSelector);}
-
     public SelenideElement getAttachmentsItem() {return $(attachmentsSelector);}
-
     public SelenideElement getLogsItem() {return $(logsSelector);}
-
     public SelenideElement getSettingsItem() {return $(settingsSelector);}
-
     public SelenideElement getInviteNewMemberButton() {return $(inviteNewMemberButtonSelector);}
-
     public SelenideElement getSuccessMessage() {return $(successFieldSelector);}
-
     public SelenideElement getErrorMessage() {return $(errorFieldSelector);}
 
     public void openPageByUrl() {

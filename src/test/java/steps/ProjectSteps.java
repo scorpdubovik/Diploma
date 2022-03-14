@@ -2,7 +2,7 @@ package steps;
 
 import models.ProjectBuilder;
 import org.openqa.selenium.By;
-import pages.AddProjectPageSelenide;
+import pages.projects.AddProjectPageSelenide;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;

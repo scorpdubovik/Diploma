@@ -1,8 +1,8 @@
 package steps;
 
 import models.UserBuilder;
-import pages.InvitePageSelenide;
-import pages.WorkspacePageSelenide;
+import pages.invite.InvitePageSelenide;
+import pages.workspace.WorkspacePageSelenide;
 
 import static com.codeborne.selenide.Condition.enabled;
 
