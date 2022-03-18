@@ -55,10 +55,10 @@ public class BaseTest {
         loginPageSelenide.loginUsers();
     }
 
-    @AfterClass
-    public void closePage() {
-        closeWebDriver();
-    }
+//    @AfterClass
+//    public void closePage() {
+//        closeWebDriver();
+//    }
 
     @AfterClass
     public void closeConnection() {
