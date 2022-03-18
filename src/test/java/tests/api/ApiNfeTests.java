@@ -7,8 +7,10 @@ import io.restassured.response.Response;
 import models.MilestoneBuilder;
 import models.ProjectBuilder;
 import org.apache.http.HttpStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import steps.DB_CaseSteps;
 import utils.Endpoints;
 
 import static io.restassured.RestAssured.given;
@@ -24,8 +26,12 @@ public class ApiNfeTests extends BaseApiTest {
     private String projectCode;
     private int milestoneId;
 
+    public static Logger logger = Logger.getLogger(ApiNfeTests.class);
+
     @Test
     public void addProjectTest() {
+        logger.trace("addProjectTest is started...");
+
         newProject = new ProjectBuilder.Builder()
                 .withName("Project1")
                 .withCode("Our")
@@ -46,6 +52,8 @@ public class ApiNfeTests extends BaseApiTest {
 
     @Test(dependsOnMethods = "addProjectTest")
     public void getProjectTest() {
+        logger.trace("getProjectTest is started...");
+
         expectedProject = new ProjectBuilder.Builder()
                 .withName("Project1")
                 .build();
@@ -62,6 +70,8 @@ public class ApiNfeTests extends BaseApiTest {
 
     @Test(dependsOnMethods = "addProjectTest")
     public void addMilestoneTest() {
+        logger.trace("addMilestoneTest is started...");
+
         newMilestone = new MilestoneBuilder.Builder()
                 .withName("Sprint1")
                 .withDescription("My new Milestone")

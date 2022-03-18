@@ -13,18 +13,17 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class UiPositiveTests extends BaseTest {
     private CaseBuilder addCases;
-    private AddCasePageSelenide addCasePageSelenide;
     private ProjectBuilder addProject;
+    private AddCasePageSelenide addCasePageSelenide;
     private AddProjectPageSelenide addProjectSelenide;
     public static String addProjectName;
     public static String addCaseName;
 
-    @Test
+    @Test(description = "Create new project test", priority = 1)
     public void createProjectTest() {
         db_projectSteps.createProjectTable(dataBaseService);
 
@@ -35,7 +34,24 @@ public class UiPositiveTests extends BaseTest {
         $(By.xpath("//p[@class='header']")).shouldBe(visible).shouldHave(text("Kanye"));
     }
 
-    @Test(dataProvider = "dataForLimitTest", dataProviderClass = StaticProvider.class)
+    @Test(description = "Check dialog box test", priority = 2)
+    public void ddCaseForCheckDialogBoxTest() {
+        db_caseSteps.createCaseTable(dataBaseService);
+
+        addCases = db_caseSteps.createAddCase(dataBaseService, 1);
+        addCaseName = addCases.getTitle();
+
+        addCasePageSelenide = caseSteps.addCase(addCases);
+        $(By.xpath("//*[@class='style_title-1ehyC']")).shouldBe(visible).shouldHave(text("Test cases without suite"));
+    }
+
+    @Test(description = "Delete project test", priority = 3)
+    public void deleteProjectTest() {
+        addProjectSelenide = projectSteps.deleteProject(addProject);
+        $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
+    }
+
+    @Test(dataProvider = "dataForLimitTest", dataProviderClass = StaticProvider.class, priority = 4)
     public void limitTest(String name, String code, String expectedResult) {
         ProjectBuilder newProject = new ProjectBuilder.Builder()
                 .withName(name)
@@ -51,32 +67,16 @@ public class UiPositiveTests extends BaseTest {
         }
     }
 
-    @Test(description = "createProjectTest")
-    public void ddCaseForCheckDialogBoxTest() {
-        db_caseSteps.createCaseTable(dataBaseService);
-
-        addCases = db_caseSteps.createAddCase(dataBaseService, 1);
-        addCaseName = addCases.getTitle();
-
-        addCasePageSelenide = caseSteps.addCase(addCases);
-        $(By.xpath("//*[@class='style_title-1ehyC']")).shouldBe(visible).shouldHave(text("Test cases without suite"));
-    }
-
-    @Test(description = "ddCaseForCheckDialogBoxTest")
-    public void deleteProjectTest() {
-        addProjectSelenide = projectSteps.deleteProject(addProject);
-        $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
-    }
-
-    @Test(description = "deleteProjectTest")
+    @Test(description = "Pop up window test", priority = 5)
     public void popUpWindowTest() {
         $(By.xpath("//*[.= 'Workspace']")).click();
         $(By.xpath("//*[.= 'Logs']")).click();
         $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
         $(By.xpath("//*[.= 'not now']")).doubleClick();
+        open("/projects");
     }
 
-    @Test(description = "popUpWindowTest")
+    @Test(description = "upload file test", priority = 5)
     public void uploadFileTest() {
         $(By.id("user-menu")).click();
         $(By.xpath("//*[.= ' Profile']")).click();
@@ -84,6 +84,7 @@ public class UiPositiveTests extends BaseTest {
         sleep(12000);
 
         $("#project-image").shouldBe(visible);
+        open("/projects");
     }
 }
 

@@ -5,11 +5,11 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import core.DataBaseService;
 import core.ReadProperties;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import pages.login.LoginPageSelenide;
 import steps.*;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseTest {
@@ -20,9 +20,14 @@ public class BaseTest {
     protected InviteSteps inviteSteps;
     protected DataBaseService dataBaseService;
 
-    @BeforeClass(dependsOnMethods = "setupConnection")
-    public void setUp() {
+    @BeforeClass
+    public void setupConnection() {
+        org.apache.log4j.BasicConfigurator.configure();
+        dataBaseService = new DataBaseService();
+    }
 
+    @BeforeClass
+    public void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
                 .savePageSource(true)
@@ -35,7 +40,7 @@ public class BaseTest {
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
         Configuration.startMaximized = false;
         Configuration.fastSetValue = true;
-        Configuration.timeout = 8000;
+        Configuration.timeout = 15000;
         Configuration.headless = ReadProperties.isHeadless();
 
         projectSteps = new ProjectSteps();
@@ -46,15 +51,13 @@ public class BaseTest {
 
         // Login
         open("/");
-
         LoginPageSelenide loginPageSelenide = new LoginPageSelenide();
         loginPageSelenide.loginUsers();
     }
 
-    @BeforeClass
-    public void setupConnection() {
-        org.apache.log4j.BasicConfigurator.configure();
-        dataBaseService = new DataBaseService();
+    @AfterClass
+    public void closePage() {
+        closeWebDriver();
     }
 
     @AfterClass
