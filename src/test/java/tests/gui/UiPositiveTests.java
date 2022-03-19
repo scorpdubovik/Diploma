@@ -2,6 +2,7 @@ package tests.gui;
 
 import baseEntity.BaseTest;
 import data.StaticProvider;
+import io.qameta.allure.Description;
 import models.CaseBuilder;
 import models.ProjectBuilder;
 import org.openqa.selenium.By;
@@ -23,7 +24,8 @@ public class UiPositiveTests extends BaseTest {
     public static String addProjectName;
     public static String addCaseName;
 
-    @Test(description = "Create new project test", priority = 1)
+    @Test(priority = 1)
+    @Description("Create new project test")
     public void createProjectTest() {
         db_projectSteps.createProjectTable(dataBaseService);
 
@@ -34,7 +36,8 @@ public class UiPositiveTests extends BaseTest {
         $(By.xpath("//p[@class='header']")).shouldBe(visible).shouldHave(text("Kanye"));
     }
 
-    @Test(description = "Check dialog box test", priority = 2)
+    @Test(priority = 2)
+    @Description("Check dialog box test")
     public void ddCaseForCheckDialogBoxTest() {
         db_caseSteps.createCaseTable(dataBaseService);
 
@@ -45,13 +48,15 @@ public class UiPositiveTests extends BaseTest {
         $(By.xpath("//*[@class='style_title-1ehyC']")).shouldBe(visible).shouldHave(text("Test cases without suite"));
     }
 
-    @Test(description = "Delete project test", priority = 3)
+    @Test(priority = 3)
+    @Description("Delete project test")
     public void deleteProjectTest() {
         addProjectSelenide = projectSteps.deleteProject(addProject);
         $(By.xpath("//*[.= 'Kanye']")).shouldNotBe(visible);
     }
 
     @Test(dataProvider = "dataForLimitTest", dataProviderClass = StaticProvider.class, priority = 4)
+    @Description("limit test")
     public void limitTest(String name, String code, String expectedResult) {
         ProjectBuilder newProject = new ProjectBuilder.Builder()
                 .withName(name)
@@ -67,16 +72,17 @@ public class UiPositiveTests extends BaseTest {
         }
     }
 
-    @Test(description = "Pop up window test", priority = 5)
+    @Test(priority = 5)
+    @Description("Pop up window test")
     public void popUpWindowTest() {
         $(By.xpath("//*[.= 'Workspace']")).click();
         $(By.xpath("//*[.= 'Logs']")).click();
         $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
         $(By.xpath("//*[.= 'not now']")).doubleClick();
-        open("/projects");
     }
 
-    @Test(description = "upload file test", priority = 5)
+    @Test(priority = 5)
+    @Description("Upload file test")
     public void uploadFileTest() {
         $(By.id("user-menu")).click();
         $(By.xpath("//*[.= ' Profile']")).click();
@@ -84,7 +90,6 @@ public class UiPositiveTests extends BaseTest {
         sleep(12000);
 
         $("#project-image").shouldBe(visible);
-        open("/projects");
     }
 }
 

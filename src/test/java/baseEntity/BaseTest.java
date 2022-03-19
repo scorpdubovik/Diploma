@@ -38,9 +38,9 @@ public class BaseTest {
         // Настройка Selenide
         Configuration.baseUrl = ReadProperties.getUrl();
         Configuration.browser = ReadProperties.getBrowserName().toLowerCase();
-        Configuration.startMaximized = false;
+        Configuration.startMaximized = true;
         Configuration.fastSetValue = true;
-        Configuration.timeout = 15000;
+        Configuration.timeout = 8000;
         Configuration.headless = ReadProperties.isHeadless();
 
         projectSteps = new ProjectSteps();
