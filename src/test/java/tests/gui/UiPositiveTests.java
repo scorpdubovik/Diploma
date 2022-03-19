@@ -79,7 +79,6 @@ public class UiPositiveTests extends BaseTest {
         $(By.xpath("//*[.= 'Logs']")).click();
         $(By.xpath("//h1[@class='header']")).shouldBe(visible).shouldHave(text("Upgrade"));
         $(By.xpath("//*[.= 'not now']")).doubleClick();
-        open("/projects");
     }
 
     @Test(priority = 5)
@@ -91,7 +90,6 @@ public class UiPositiveTests extends BaseTest {
         sleep(12000);
 
         $("#project-image").shouldBe(visible);
-        open("/projects");
     }
 }
 
