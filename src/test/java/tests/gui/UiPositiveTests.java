@@ -14,7 +14,8 @@ import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UiPositiveTests extends BaseTest {
     private CaseBuilder addCases;
@@ -56,7 +57,7 @@ public class UiPositiveTests extends BaseTest {
     }
 
     @Test(dataProvider = "dataForLimitTest", dataProviderClass = StaticProvider.class, priority = 4)
-    @Description("limit test")
+    @Description("Test for checking the input field for boundary values")
     public void limitTest(String name, String code, String expectedResult) {
         ProjectBuilder newProject = new ProjectBuilder.Builder()
                 .withName(name)
