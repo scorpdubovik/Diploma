@@ -9,10 +9,12 @@ import utils.Randomization;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.open;
 
 public class UiNegativeTests extends BaseTest {
     private UserBuilder newUser;
     private WorkspacePageSelenide workspacePageSelenide;
+
 
     @Test
     @Description("Incorrect data entry test")
@@ -30,7 +32,7 @@ public class UiNegativeTests extends BaseTest {
 
     @Test
     @Description("Test for input data exceeding the allowable")
-    public void dataExcessTest() {
+    public void exceedingInputDataTest() {
         newUser = new UserBuilder.Builder()
                 .withEmail(Randomization.getRandomString(7) + "@gmail.com")
                 .withName(Randomization.getRandomString(5))
@@ -40,6 +42,8 @@ public class UiNegativeTests extends BaseTest {
         workspacePageSelenide = inviteSteps.inviteNewUser(newUser);
 
         workspacePageSelenide.getErrorMessage().shouldBe(visible).shouldHave(text("Server Error"));
+
+        open("/projects");
     }
 
     @Test
@@ -48,7 +52,7 @@ public class UiNegativeTests extends BaseTest {
         newUser = new UserBuilder.Builder()
                 .withEmail(Randomization.getRandomString(3) + "@gmail.com")
                 .withName(Randomization.getRandomString(4))
-                .withRoleTitle(Randomization.getRandomString(100))
+                .withRoleTitle(Randomization.getRandomString(5))
                 .build();
 
         workspacePageSelenide = inviteSteps.inviteNewUser(newUser);

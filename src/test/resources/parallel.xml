@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="MainSuite" thread-count="3" parallel="classes">
-    <test name="Smoke">
+<suite name="MainSuite" thread-count="3" parallel="tests">
+    <test name="Gui_positive_tests">
         <classes>
             <class name="tests.gui.UiPositiveTests"></class>
+        </classes>
+    </test>
+
+    <test name="Gui_negative_tests">
+        <classes>
             <class name="tests.gui.UiNegativeTests"></class>
+        </classes>
+    </test>
+
+    <test name="Api_tests">
+        <classes>
             <class name="tests.api.ApiAfeTests"></class>
             <class name="tests.api.ApiNfeTests"></class>
         </classes>

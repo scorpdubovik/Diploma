@@ -18,6 +18,7 @@ public class WorkspacePageSelenide {
     private final By attachmentsSelector = By.xpath("//span[. = 'Attachments']");
     private final By logsSelector = By.xpath("//span[. = 'Logs']");
     private final By settingsSelector = By.xpath("//span[. = 'Settings']");
+    private final String projectSelector = ".nav-item.active .nav-link.menu-link .nav-link-title";
     private final String inviteNewMemberButtonSelector = ".btn.btn-primary.me-2";
     private String successFieldSelector = "alert.alert-success.show";
     private String errorFieldSelector = ".alert.alert-error.alert-dismissible.show";
@@ -38,6 +39,7 @@ public class WorkspacePageSelenide {
     public SelenideElement getInviteNewMemberButton() {return $(inviteNewMemberButtonSelector);}
     public SelenideElement getSuccessMessage() {return $(successFieldSelector);}
     public SelenideElement getErrorMessage() {return $(errorFieldSelector);}
+    public SelenideElement getProjectItem() {return $(projectSelector);}
 
     public void openPageByUrl() {
         open(ENDPOINT);

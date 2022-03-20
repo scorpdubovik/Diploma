@@ -20,13 +20,7 @@ public class BaseTest {
     protected InviteSteps inviteSteps;
     protected DataBaseService dataBaseService;
 
-    @BeforeClass
-    public void setupConnection() {
-        org.apache.log4j.BasicConfigurator.configure();
-        dataBaseService = new DataBaseService();
-    }
-
-    @BeforeClass
+    @BeforeTest
     public void setUp() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
                 .screenshots(true)
@@ -43,25 +37,28 @@ public class BaseTest {
         Configuration.timeout = 8000;
         Configuration.headless = ReadProperties.isHeadless();
 
-        projectSteps = new ProjectSteps();
-        caseSteps = new CaseSteps();
-        db_projectSteps = new DB_ProjectSteps();
-        db_caseSteps = new DB_CaseSteps();
-        inviteSteps = new InviteSteps();
-
         // Login
         open("/");
         LoginPageSelenide loginPageSelenide = new LoginPageSelenide();
         loginPageSelenide.loginUsers();
     }
 
-    @AfterClass
-    public void closePage() {
-        closeWebDriver();
+    @BeforeClass
+    public void setupConnection() {
+        org.apache.log4j.BasicConfigurator.configure();
+        dataBaseService = new DataBaseService();
+
+        //Steps initialization
+        projectSteps = new ProjectSteps();
+        caseSteps = new CaseSteps();
+        db_projectSteps = new DB_ProjectSteps();
+        db_caseSteps = new DB_CaseSteps();
+        inviteSteps = new InviteSteps();
     }
 
     @AfterClass
-    public void closeConnection() {
-        dataBaseService.closeConnection();
-    }
+    public void closeConnection() { dataBaseService.closeConnection();}
+
+    @AfterTest
+    public void closePage() { closeWebDriver();}
 }
